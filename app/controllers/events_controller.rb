@@ -2,12 +2,16 @@ class EventsController < ApplicationController
   before_action :set_event, only: [:show, :update, :destroy]
 
   def index
-    @events = Event.all
+    @events = Event.where(deleted: false)
     render json: @events
   end
 
   def show
-    render json: @event
+    if @event.deleted
+      render json: nil, status: :not_found
+    else
+      render json: @event
+    end
   end
 
   def create
@@ -29,22 +33,25 @@ class EventsController < ApplicationController
   end
 
   def destroy
-    @event.destroy
+    @event.update_columns(deleted: true)
   end
 
   private
-    def set_event
-      @event = Event.find(params[:id])
-    end
 
-    def event_params
-      params.require(:event).permit(:name,
-                                    :description,
-                                    :location,
-                                    :start_date,
-                                    :end_date,
-                                    :published,
-                                    :deleted,
-                                    :group_event_id)
-    end
+  def set_event
+    @event = Event.find(params[:id])
+  end
+
+  def event_params
+    params.require(:event).permit(
+    :name,
+    :description,
+    :location,
+    :start_date,
+    :end_date,
+    :published,
+    :deleted,
+    :group_event_id
+    )
+  end
 end

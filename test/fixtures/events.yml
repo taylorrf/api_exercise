@@ -10,12 +10,12 @@ one:
   deleted: false
   group_event: brazil_trip
 
-two:
-  name:
-  description:
-  location:
-  start_date:
-  end_date:
-  published:
-  deleted:
-  group_event: two
+deleted:
+  name: "Buy Spotfiy Premium"
+  description: "needing to buy the premium"
+  location: "internet"
+  start_date: "11-25-2016"
+  end_date: "11-25-2016"
+  published: false
+  deleted: true
+  group_event: brazil_trip

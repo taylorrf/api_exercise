@@ -40,12 +40,4 @@ class GroupEventsControllerTest < ActionDispatch::IntegrationTest
 
     assert_response 200
   end
-
-  test "should destroy group_event" do
-    assert_difference('GroupEvent.count', -1) do
-      delete group_event_url(@group_event), as: :json
-    end
-
-    assert_response 204
-  end
 end

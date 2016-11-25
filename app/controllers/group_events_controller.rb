@@ -29,16 +29,17 @@ class GroupEventsController < ApplicationController
     end
   end
 
-  def destroy
-    @group_event.destroy
+  private
+
+  def set_group_event
+    @group_event = GroupEvent.find(params[:id])
   end
 
-  private
-    def set_group_event
-      @group_event = GroupEvent.find(params[:id])
-    end
-
-    def group_event_params
-      params.require(:group_event).permit(:title, :days_duration, :user_id)
-    end
+  def group_event_params
+    params.require(:group_event).permit(
+    :title,
+    :days_duration,
+    :user_id
+    )
+  end
 end

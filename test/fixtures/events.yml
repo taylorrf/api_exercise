@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: "Buy tickets"
+  description: "needs to buy the tickets"
+  location: "online"
+  start_date:
+  end_date:
+  published: false
+  deleted: false
+  group_event: brazil_trip
+
+two:
+  name:
+  description:
+  location:
+  start_date:
+  end_date:
+  published:
+  deleted:
+  group_event: two

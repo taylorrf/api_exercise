@@ -3,7 +3,7 @@ class CreateGroupEvents < ActiveRecord::Migration[5.0]
     create_table :group_events do |t|
       t.string :title
       t.integer :days_duration
-      t.belongs_to :user, foreign_key: true
+      t.belongs_to :user, foreign_key: true, index: true
 
       t.timestamps
     end

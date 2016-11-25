@@ -2,7 +2,7 @@ require 'test_helper'
 
 class EventsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @event = events(:one)
+    @event = events(:buy_tickets)
   end
 
   test "should get index" do
@@ -16,7 +16,7 @@ class EventsControllerTest < ActionDispatch::IntegrationTest
         event: {
           name: @event.name,
           description: @event.description,
-          start_date: @event.start_date
+          start_date: @event.start_date,
           end_date: @event.end_date,
           group_event_id: @event.group_event_id,
           location: @event.location,
@@ -34,8 +34,8 @@ class EventsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "can't show an deleted event" do
-    @event = events(:deleted)
-    get event_url(@event), as: :json
+    event = events(:deleted)
+    get event_url(event), as: :json
     assert_response :not_found
   end
 
@@ -44,12 +44,12 @@ class EventsControllerTest < ActionDispatch::IntegrationTest
       event: {
         deleted: @event.deleted,
         description: @event.description,
+        start_date: @event.start_date,
         end_date: @event.end_date,
         group_event_id: @event.group_event_id,
         location: @event.location,
         name: @event.name,
-        published: @event.published,
-        start_date: @event.start_date
+        published: @event.published
       }
     }, as: :json
 

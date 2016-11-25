@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+buy_tickets:
   name: "Buy tickets"
   description: "needs to buy the tickets"
   location: "online"
-  start_date:
-  end_date:
+  start_date:  <%= Date.today.strftime("%Y-%m-%d") %>
+  end_date: <%= Date.today.+(1).strftime("%Y-%m-%d") %>
   published: false
   deleted: false
   group_event: brazil_trip
@@ -14,8 +14,8 @@ deleted:
   name: "Buy Spotfiy Premium"
   description: "needing to buy the premium"
   location: "internet"
-  start_date: "11-25-2016"
-  end_date: "11-25-2016"
+  start_date: <%= Date.today.strftime("%Y-%m-%d") %>
+  end_date: <%= Date.today.+(5).strftime("%Y-%m-%d") %>
   published: false
   deleted: true
   group_event: brazil_trip

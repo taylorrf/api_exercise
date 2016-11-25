@@ -1,21 +1,17 @@
 # Whitespectre Exercise
 
 
-
-
-* Ruby version
+### Ruby version
 2.3.1
 
-* Rails version
+### Rails version
 5.0.0.1
 
-* Database creation
+### Initial Setup
 rake db:create
-
-* Database initialization
 rake db:migrate
 
-* How to run the test suite
+### Running the test suite
 rake test
 
 * Deployment instructions

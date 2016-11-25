@@ -1,5 +1,8 @@
 # Whitespectre Exercise
 
+
+
+
 * Ruby version
 2.3.1
 
@@ -7,13 +10,12 @@
 5.0.0.1
 
 * Database creation
+rake db:create
 
 * Database initialization
+rake db:migrate
 
 * How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
+rake test
 
 * Deployment instructions
-
-* ...

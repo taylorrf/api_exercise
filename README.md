@@ -43,14 +43,14 @@ curl http://localhost:3000/group_events
 curl -v -H "Accept: application/json" -H "Content-type: application/json" -X POST -d ' {"event":{"name":"Passport","description":"renew the passport", "location":"São Paulo", "start_date":"10-10-2016", "end_date":"12-10-2016", "group_event_id": "1"}}' http://localhost:3000/events
 ```
 
-Background:
+## Spec Background:
 - [x] A group event will be created by an user.
 - [x] The group event should run for a whole number of days e.g.. 30 or 60.
 - [x] There should be attributes to set and update the start, end
 - [ ] Duration of the event (and calculate the other value).
 - [x] The event also has a name, description (which supports formatting) and location.
-- [ ] The event should be draft or published.
-- [ ] To publish all of the fields are required, it can be saved with only a subset of fields before it’s published.
+- [x] The event should be draft or published.
+- [x] To publish all of the fields are required, it can be saved with only a subset of fields before it’s published.
 - [x] When the event is deleted/remove it should be kept in the database and marked as such.
 
 Deliverable:

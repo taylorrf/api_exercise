@@ -1,4 +1,8 @@
 class Event < ApplicationRecord
+  attr_reader :status
   belongs_to :group_event
-  validates :name, :start_date, :end_date, presence: true
+
+  def status
+    self.published ? "published" : "draft"
+  end
 end

@@ -1,4 +1,4 @@
 class EventSerializer < ActiveModel::Serializer
-  attributes :id, :description, :location, :start_date, :end_date, :draft, :published
+  attributes :id, :name, :description, :location, :start_date, :end_date, :status
   belongs_to :group_event
 end

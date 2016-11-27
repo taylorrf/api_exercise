@@ -2,7 +2,7 @@ class EventsController < ApplicationController
   before_action :set_event, only: [:show, :update, :destroy]
 
   def index
-    @events = Event.where(deleted: false)
+    @events = Event.includes(:group_event).where(deleted: false)
     render json: @events
   end
 
@@ -15,17 +15,18 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = Event.new(event_params)
+    @event = EventSaver.new(event_params)
 
     if @event.save
-      render json: @event, status: :created, location: @event
+      render json: @event.event, status: :created, location: @event.event
     else
       render json: @event.errors, status: :unprocessable_entity
     end
   end
 
   def update
-    if @event.update(event_params)
+    params = EventSaver.new(event_params).event_params
+    if @event.update(params)
       render json: @event
     else
       render json: @event.errors, status: :unprocessable_entity

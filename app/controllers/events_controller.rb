@@ -15,18 +15,17 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = EventSaver.new(event_params)
+    @event = Event.new(params_to_save)
 
     if @event.save
-      render json: @event.event, status: :created, location: @event.event
+      render json: @event, status: :created, location: @event
     else
       render json: @event.errors, status: :unprocessable_entity
     end
   end
 
   def update
-    params = EventSaver.new(event_params).event_params
-    if @event.update(params)
+    if @event.update(params_to_save)
       render json: @event
     else
       render json: @event.errors, status: :unprocessable_entity
@@ -38,6 +37,10 @@ class EventsController < ApplicationController
   end
 
   private
+
+  def params_to_save
+    EventParams.new(event_params).to_save
+  end
 
   def set_event
     @event = Event.find(params[:id])

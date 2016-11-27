@@ -1,20 +1,11 @@
-class EventSaver
-  attr_reader :event, :params
+class EventParams
+  attr_reader :params
 
   def initialize params
     @params = params
-    @event = Event.new(event_params)
   end
 
-  def save
-    event.save
-  end
-
-  def errors
-    event.errors
-  end
-
-  def event_params
+  def to_save
     params.to_h.merge({
       draft: is_draft?,
       published: !is_draft?

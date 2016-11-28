@@ -8,11 +8,13 @@ Also, was introduced an additional User entity just to reflect what I think that
 
 Here's how the models relationship looks like:
 
+```bash
 ==============           ==============           ==============
 |            |           |            |           |            |
 |    User    |  1 => N   | GroupEvent |  1 => N   |    Event   |
 |            |           |            |           |            |
 ==============           ==============           ==============
+```
 
 Additionally, instead of Rspec the tests was written using the Minitest (included by default on Rails 5) and all test can be found in the /test folder.
 

@@ -106,4 +106,6 @@ curl -H "Accept: application/json" -H "Content-type: application/json" -d '{"eve
 ```
 
 #### Deleting an Event
+```bash
 curl -X DELETE http://localhost:3000/events/#{event_id}
+```

@@ -43,15 +43,11 @@ curl http://localhost:3000/group_events
 curl -v -H "Accept: application/json" -H "Content-type: application/json" -X POST -d ' {"event":{"name":"Passport","description":"renew the passport", "location":"São Paulo", "start_date":"10-10-2016", "end_date":"12-10-2016", "group_event_id": "1"}}' http://localhost:3000/events
 ```
 
-## Spec Background:
-- [x] A group event will be created by an user.
-- [x] The group event should run for a whole number of days e.g.. 30 or 60.
-- [x] There should be attributes to set and update the start, end
-- [ ] Duration of the event (and calculate the other value).
-- [x] The event also has a name, description (which supports formatting) and location.
-- [x] The event should be draft or published.
-- [x] To publish all of the fields are required, it can be saved with only a subset of fields before it’s published.
-- [x] When the event is deleted/remove it should be kept in the database and marked as such.
+TODO:
+- [ ] Tests on Event Params service.
+- [ ] Add more examples on README to use the API
+- [ ] Add a better description about the solution on README.
+- [ ] Provide some seeders data on `seed.rb` file
 
 Deliverable:
 Write an AR model, spec and migration for a GroupEvent that would meet the needs of the description above. Then write the api controller and spec to support JSON request/responses to manage these GroupEvents. For the purposes of this exercise, ignore auth. Please provide your solution as a rails app called exercise_YYMMDD_yourname, sent as a zip file.

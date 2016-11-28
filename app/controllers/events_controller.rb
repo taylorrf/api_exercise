@@ -16,7 +16,6 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(params_to_save)
-
     if @event.save
       render json: @event, status: :created, location: @event
     else
@@ -55,6 +54,7 @@ class EventsController < ApplicationController
     :end_date,
     :published,
     :deleted,
+    :duration,
     :group_event_id
     )
   end

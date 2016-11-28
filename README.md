@@ -105,7 +105,5 @@ curl -H "Accept: application/json" -H "Content-type: application/json" -d ' {"ev
 curl -H "Accept: application/json" -H "Content-type: application/json" -d '{"event":{"name":"bubble fish"}}' -X PATCH http://localhost:3000/events/#{event_id}
 ```
 
-curl -H "Accept: application/json" -H "Content-type: application/json" -d '{"event":{"name":"bubble fish"}}' -X PATCH http://localhost:3000/events/6
-
 #### Deleting an Event
 curl -X DELETE http://localhost:3000/events/#{event_id}

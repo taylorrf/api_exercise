@@ -1,11 +1,23 @@
-class EventParams
-  attr_reader :params
+class EventSaver
+  attr_reader :params, :event
 
   def initialize params
     @params = params.to_h
   end
 
-  def to_save
+  def create
+    event = Event.new(params_to_save)
+    [event.save, event]
+  end
+
+  def update(record)
+    @event = record
+    record.update(params_to_save)
+  end
+
+  private
+
+  def params_to_save
     sum_duration_to_dates
     fill_empty_dates
     fill_empty_keys
@@ -15,8 +27,6 @@ class EventParams
       published: !is_draft?
     })
   end
-
-  private
 
   def is_draft?
     params.map{ |param| param.last.to_s.empty? }.any?
@@ -41,8 +51,8 @@ class EventParams
   end
 
   def fill_empty_keys
-    params[:name] = "" if params[:name].blank?
-    params[:description] = "" if params[:description].blank?
-    params[:location] =  "" if params[:location].blank?
+    params[:name] = (event && event.name) || "" if params[:name].blank?
+    params[:description] = (event && event.description ) || "" if params[:description].blank?
+    params[:location] =  (event && event.location) || "" if params[:location].blank?
   end
 end

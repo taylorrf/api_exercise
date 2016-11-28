@@ -38,7 +38,6 @@ class GroupEventsController < ApplicationController
   def group_event_params
     params.require(:group_event).permit(
     :title,
-    :days_duration,
     :user_id
     )
   end

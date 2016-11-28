@@ -10,7 +10,7 @@ class Event < ApplicationRecord
   end
 
   def duration
-    if self.start_date && self.end_date
+    if (self.start_date && self.end_date) and (self.end_date > self.start_date)
       self.duration = (self.end_date - self.start_date).to_i
     end
   end

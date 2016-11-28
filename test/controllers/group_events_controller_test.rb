@@ -14,7 +14,6 @@ class GroupEventsControllerTest < ActionDispatch::IntegrationTest
     assert_difference('GroupEvent.count') do
       post group_events_url, params: {
           group_event: {
-              days_duration: @group_event.days_duration,
               title: @group_event.title,
               user_id: @group_event.user_id
           }
@@ -32,7 +31,6 @@ class GroupEventsControllerTest < ActionDispatch::IntegrationTest
   test "should update group_event" do
     patch group_event_url(@group_event), params: {
         group_event: {
-          days_duration: @group_event.days_duration,
           title: @group_event.title,
           user_id: @group_event.user_id
         }

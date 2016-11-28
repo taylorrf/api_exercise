@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:show, :update, :destroy]
+  before_action :set_event, only: [:show, :update]
 
   def index
     @events = Event.includes(:group_event).where(deleted: false)
@@ -15,16 +15,18 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = Event.new(params_to_save)
-    if @event.save
-      render json: @event, status: :created, location: @event
+    result = EventSaver.new(event_params).create
+    saved, event = result.first, result.second
+    if saved
+      render json: event, status: :created, location: event
     else
-      render json: @event.errors, status: :unprocessable_entity
+      render json: event.errors, status: :unprocessable_entity
     end
   end
 
   def update
-    if @event.update(params_to_save)
+    updated = EventSaver.new(event_params).update(@event)
+    if updated
       render json: @event
     else
       render json: @event.errors, status: :unprocessable_entity
@@ -32,14 +34,14 @@ class EventsController < ApplicationController
   end
 
   def destroy
+    @event = Event.find(params[:id])
     @event.update_columns(deleted: true)
+    render json: {message: "Event was deleted"}.to_json, status: :ok
+  rescue ActiveRecord::RecordNotFound
+    render json: {message: "Event not found"}.to_json, status: :not_found
   end
 
   private
-
-  def params_to_save
-    EventParams.new(event_params).to_save
-  end
 
   def set_event
     @event = Event.find(params[:id])

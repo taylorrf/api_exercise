@@ -20,7 +20,18 @@ class EventsControllerTest < ActionDispatch::IntegrationTest
           end_date: @event.end_date,
           group_event_id: @event.group_event_id,
           location: @event.location,
-          published: @event.published
+        }
+      }, as: :json
+    end
+
+    assert_response 201
+  end
+
+  test "should create event with a small dataset" do
+    assert_difference('Event.count') do
+      post events_url, params: {
+        event: {
+          group_event_id: @event.group_event_id,
         }
       }, as: :json
     end
@@ -60,6 +71,6 @@ class EventsControllerTest < ActionDispatch::IntegrationTest
     assert_equal(false, @event.deleted)
     delete event_url(@event), as: :json
     assert_equal(true, @event.reload.deleted)
-    assert_response 204
+    assert_response 200
   end
 end

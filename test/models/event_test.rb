@@ -13,13 +13,13 @@ class EventTest < ActiveSupport::TestCase
 
   test "#duration can't calulate without both dates" do
     @event.start_date = nil
-    assert_equal nil, @event.duration
+    assert_nil @event.duration
   end
 
   test "#duration can't calulate when start date are greater than end date" do
     @event.start_date = Date.today.+(2)
     @event.end_date = Date.today
-    assert_equal nil, @event.duration
+    assert_nil @event.duration
   end
 
   test "#status returns status `draft` when it's not published" do

@@ -1,10 +1,8 @@
-# Whitespectre Exercise
+# API Exercise
 
-Here's the solution for the suggested exercise.
+Here's the solution for the suggested exercise using Rails 5 to build a tiny API.
 
-The main difference between this solution and the description provided is that I'm modeling `GroupEvent` here intended to be a `Group` with many events on it. On the description, GroupEvent seems like the Event itself and looks like the single entity to be delivered.
-
-Also, was introduced an additional User entity just to reflect what I think that should be something more close to a tiny but useful first version.
+The main difference between this solution and the description provided is that I'm modeling `GroupEvent` here intended to be a `Group` with many events on it and an additional User entity was introduced to reflect what I think that should be something more close to a tiny but useful first version.
 
 Here's how the models relationship looks like:
 
@@ -16,12 +14,12 @@ Here's how the models relationship looks like:
 ==============           ==============           ==============
 ```
 
-Additionally, instead of Rspec the tests was written using the Minitest (included by default on Rails 5) and all test can be found in the /test folder.
+Additionally, instead of Rspec the tests was intentionally written using the Minitest (included by default on Rails 5) and all test can be found in the /test folder.
 
 Questions or feedbacks about this solution are very welcome at any time.
 
 Regards,
-Tailor.
+Tailor Fontela.
 
 
 ## Setup and general instructions
@@ -42,7 +40,6 @@ rake db:setup
 rake test
 
 
-
 ## Examples to use the API
 
 ## Users
@@ -59,7 +56,6 @@ rake test
 
 #### Listing all Users
 curl http://localhost:3000/users/
-
 
 
 ## Group Event
